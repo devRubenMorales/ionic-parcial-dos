@@ -1,0 +1,7 @@
+{
+  "name": "proyecto-parcial-dos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
