@@ -15,10 +15,9 @@ export class Tab1Page implements OnInit{
   exchanges: Exchange[] = []
   constructor(private exchangesService:ExchangeService, private router:Router) {}
 
- ngOnInit(){
-  this.exchangesService.getExchanges().subscribe(respuesta =>{
-  this.exchanges = respuesta
-  })
-
-}
+  ngOnInit(){
+    this.exchangesService.getExchanges().subscribe(respuesta =>{
+    this.exchanges = respuesta
+    })
+  }
 }
