@@ -12,6 +12,11 @@
   <ion-toolbar>
     <ion-searchbar placeholder="Buscar"  (input)="searchExchange($event)" animated ></ion-searchbar>
   
+<ion-select label="Outline select" label-placement="floating" fill="outline" [(ngModel)]="selectedFilter" (ngModelChange)="filterExchange">
+  <ion-select-option value="trust-score-rank">Trust Score Rank</ion-select-option>
+  <ion-select-option value="a-z">A-Z</ion-select-option>
+  <ion-select-option value=""></ion-select-option>
+</ion-select>
   </ion-toolbar>
   <ion-card>
     <ion-card-content>

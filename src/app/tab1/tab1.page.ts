@@ -14,7 +14,9 @@ export class Tab1Page implements OnInit{
   component = Tab2Page
   exchanges: Exchange[] = []
   SearchNames: any;
-  
+  selectedFilter:string='trust-score-rank';
+  filteredExchange:any;
+
   constructor(private exchangesService:ExchangeService, private router:Router) {}
 
   ngOnInit(){
@@ -32,7 +34,15 @@ searchExchange(event:any){
     return (exchange.name.toLowerCase().indexOf(text.toLowerCase())) > -1
   })
 }
-
+}
+filterExchange(){
+this.exchangesService.getExchanges().subscribe(respuesta =>{
+this.exchanges=respuesta;
+if(this.selectedFilter==='trust-score-rank'){
+this.filteredExchange=this.exchanges
+}else{
+this.filteredExchange=this.exchanges.filter(exchange => exchange.trust_score_rank)  
+}
+})
 }
 }
-
