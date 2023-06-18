@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { Tab2Page } from './tab2/tab2.page';
 
+
+
 const routes: Routes = [
   {
     path: '',
@@ -11,7 +13,7 @@ const routes: Routes = [
     path: 'detalle-exchange/:id',
     component: Tab2Page
   }
-  
+
 ];
 @NgModule({
   imports: [

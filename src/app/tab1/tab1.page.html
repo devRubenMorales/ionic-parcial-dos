@@ -7,9 +7,15 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+
+  <ion-toolbar>
+    <ion-searchbar placeholder="Buscar"  (input)="searchExchange($event)" animated ></ion-searchbar>
+  
+  </ion-toolbar>
   <ion-card>
     <ion-card-content>
-      <ion-list *ngFor="let exchange of exchanges">
+      <ion-list *ngFor="let exchange of SearchNames  ">
          <ion-item>
           <ion-thumbnail slot="start">
             <img src="{{exchange.image}}" />
