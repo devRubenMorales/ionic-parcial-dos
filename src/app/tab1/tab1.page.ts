@@ -27,7 +27,6 @@ export class Tab1Page implements OnInit{
   }
 searchExchange(event:any){
   const text= event.target.value;
-  
  this.SearchNames = this.exchanges
  if (text&& text.trim() !=''){
   this.SearchNames = this.SearchNames.filter((exchange: any)=>{
@@ -36,13 +35,27 @@ searchExchange(event:any){
 }
 }
 filterExchange(){
-this.exchangesService.getExchanges().subscribe(respuesta =>{
-this.exchanges=respuesta;
-if(this.selectedFilter==='trust-score-rank'){
-this.filteredExchange=this.exchanges
-}else{
-this.filteredExchange=this.exchanges.filter(exchange => exchange.trust_score_rank)  
-}
-})
+  if(this.selectedFilter==='trust-score-rank'){
+    this.SearchNames = this.exchanges.sort((a,b) => {
+      if (a.trust_score_rank < b.trust_score_rank){
+        return -1;
+      }else if (a.trust_score_rank > b.trust_score_rank){
+        return 1;
+      }else{
+        return 0;
+      }
+    })
+  }else if(this.selectedFilter==='a-z'){
+    this.SearchNames = this.exchanges.sort((a, b) => {
+      // Ordenar alfabéticamente por nombre
+      if (a.name < b.name) {
+        return -1;
+      } else if (a.name > b.name) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+  }
 }
 }

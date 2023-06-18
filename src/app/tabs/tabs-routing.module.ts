@@ -1,30 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { Tab2Page } from '../tab2/tab2.page';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: 'exchanges',
     component: TabsPage,
     children: [
       {
-        path: 'exchange',
+        path: 'list',
         loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
       },
       {
         path: 'info-exchange',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule),
+        component: Tab2Page
       },
       {
         path: '',
-        redirectTo: '/home/exchange',
+        redirectTo: '/exchanges/list',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/home/exchange',
+    redirectTo: '/exchanges/list',
     pathMatch: 'full'
   }
 ];

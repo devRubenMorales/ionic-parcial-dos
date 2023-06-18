@@ -4,15 +4,12 @@ import { Tab2Page } from './tab2/tab2.page';
 
 
 
+
 const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
-  {
-    path: 'detalle-exchange/:id',
-    component: Tab2Page
-  }
 
 ];
 @NgModule({
