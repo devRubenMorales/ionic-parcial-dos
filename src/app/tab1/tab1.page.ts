@@ -47,7 +47,6 @@ filterExchange(){
     })
   }else if(this.selectedFilter==='a-z'){
     this.SearchNames = this.exchanges.sort((a, b) => {
-      // Ordenar alfabéticamente por nombre
       if (a.name < b.name) {
         return -1;
       } else if (a.name > b.name) {
