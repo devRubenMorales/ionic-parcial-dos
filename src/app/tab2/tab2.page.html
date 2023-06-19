@@ -1,5 +1,10 @@
 <ion-header [translucent]="true">
+  
+
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title >
       Exchange Info
     </ion-title>
@@ -7,9 +12,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" *ngIf="data" class="ion-container">
-  <ion-button >
-  <ion-back-button  defaultHref="/exchanges/list"></ion-back-button>
-</ion-button>
   <ion-card>
     <ion-card-header>
       <ion-img class="imagen" src="{{data.image}}"></ion-img>

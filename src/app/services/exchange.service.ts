@@ -17,4 +17,8 @@ export class ExchangeService {
     const url = `https://api.coingecko.com/api/v3/exchanges/${id}`
     return this.http.get(url)
   }
+
+  addFavExchange(){
+    
+  }
 }

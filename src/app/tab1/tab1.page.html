@@ -9,11 +9,12 @@
 <ion-content [fullscreen]="true">
   <ion-toolbar>
     <br>
-    <ion-select label="Filtrar" label-placement="floating" fill="outline" [(ngModel)]="selectedFilter" (ngModelChange)="filterExchange()">
+    <ion-searchbar show-clear-button="never" placeholder="Buscar"  (input)="searchExchange($event)" animated ></ion-searchbar>
+    <br>
+    <ion-select label="Filtrar" label-placement="floating" fill="solid" [(ngModel)]="selectedFilter" (ngModelChange)="filterExchange()">
       <ion-select-option value="trust-score-rank">Trust Score Rank</ion-select-option>
       <ion-select-option value="a-z">A-Z</ion-select-option>
     </ion-select>
-    <ion-searchbar placeholder="Buscar"  (input)="searchExchange($event)" animated ></ion-searchbar>
   </ion-toolbar>
 
   <ion-card>
@@ -24,6 +25,9 @@
             <img src="{{exchange.image}}" />
           </ion-thumbnail>
           <ion-label>{{exchange.name}}</ion-label>
+          <ion-button>
+            <ion-icon aria-hidden="true" name="star"></ion-icon>
+          </ion-button>
           <ion-nav-link router-direction="forward" [component]="component" routerLink="detalle-exchange/{{exchange.id}}">
             <ion-button>Ver mas</ion-button>
           </ion-nav-link>
