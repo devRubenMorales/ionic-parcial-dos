@@ -19,13 +19,13 @@
 
   <ion-card>
     <ion-card-content>
-      <ion-list *ngFor="let exchange of SearchNames">
+      <ion-list *ngFor="let exchange of searchNames">
          <ion-item>
           <ion-thumbnail slot="start">
             <img src="{{exchange.image}}" />
           </ion-thumbnail>
           <ion-label>{{exchange.name}}</ion-label>
-          <ion-button>
+          <ion-button (click)="addExchangeFav(exchange.id)">
             <ion-icon aria-hidden="true" name="star"></ion-icon>
           </ion-button>
           <ion-nav-link router-direction="forward" [component]="component" routerLink="detalle-exchange/{{exchange.id}}">

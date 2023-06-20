@@ -1,13 +1,20 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Favorites</ion-title>
+    <ion-title>FAVORITES</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">tab3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-card-content>
+      <ion-list *ngFor="let exchange of favArray">
+         <ion-item>
+          <ion-thumbnail slot="start">
+            <img src="{{exchange.image}}" />
+          </ion-thumbnail>
+          <ion-label>{{exchange.name}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

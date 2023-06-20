@@ -7,6 +7,9 @@ import { Exchange } from '../interfaces/interfaces'
   providedIn: 'root'
 })
 export class ExchangeService {
+
+  exchanges: Exchange[] = [];
+  favArray: any[] = [];
   constructor(private http:HttpClient) { }
 
   getExchanges(){
@@ -18,7 +21,15 @@ export class ExchangeService {
     return this.http.get(url)
   }
 
-  addFavExchange(){
-    
+  addFav(favExchange: any){
+    const exist = this.favArray.find((item: any) => {return item.name === favExchange.name})
+    if(!exist){
+      this.favArray.push(favExchange)
+    }
+  }
+
+  getFav(){
+    return this.favArray;
   }
 }
+
