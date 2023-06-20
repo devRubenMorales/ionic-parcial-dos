@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { ExchangeService } from '../services/exchange.service';
 import { Exchange } from '../interfaces/interfaces'
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tab2Page } from '../tab2/tab2.page';
+import { IonInfiniteScroll , MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -17,8 +18,10 @@ export class Tab1Page implements OnInit{
   selectedFilter:string='trust-score-rank';
   filteredExchange: Exchange[] = [];
   favExchange: any;
+  @ViewChild(IonInfiniteScroll) infiniteScroll!: IonInfiniteScroll;
+  numero: number=10
 
-  constructor(private exchangesService:ExchangeService, private router:Router,  private route: ActivatedRoute,) {}
+  constructor(private exchangesService:ExchangeService, private router:Router,  private route: ActivatedRoute,private menuCtrl:MenuController) {}
 
   ngOnInit(){
     this.exchangesService.getExchanges().subscribe(respuesta =>{
@@ -65,4 +68,16 @@ export class Tab1Page implements OnInit{
       })
     }
   }
+  loadData(event:any){
+    setTimeout(() => {
+      if(this.numero < this.exchanges.length){
+        this.numero+=10; 
+        event.target.complete();
+        console.log(this.numero)
+      }else{
+        this.infiniteScroll.disabled=true;
+      }
+    }, 1000);
+  }
+
 }

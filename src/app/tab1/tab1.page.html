@@ -19,8 +19,10 @@
 
   <ion-card>
     <ion-card-content>
-      <ion-list *ngFor="let exchange of searchNames">
-         <ion-item>
+      <ion-list *ngFor="let exchange of searchNames ; let i=index ">
+        
+         <ion-item *ngIf="i<numero">
+
           <ion-thumbnail slot="start">
             <img src="{{exchange.image}}" />
           </ion-thumbnail>
@@ -35,4 +37,7 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
+  <ion-infinite-scroll (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingText="Cargando..." loadingSpinner="crescent"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

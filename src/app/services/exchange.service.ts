@@ -13,7 +13,7 @@ export class ExchangeService {
   constructor(private http:HttpClient) { }
 
   getExchanges(){
-    return this.http.get<Exchange[]>('https://api.coingecko.com/api/v3/exchanges?per_page=20')
+    return this.http.get<Exchange[]>('https://api.coingecko.com/api/v3/exchanges?per_page=100')
   }
 
   getExchangesById(id: string){
