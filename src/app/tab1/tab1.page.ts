@@ -19,7 +19,7 @@ export class Tab1Page implements OnInit{
   filteredExchange: Exchange[] = [];
   favExchange: any;
   @ViewChild(IonInfiniteScroll) infiniteScroll!: IonInfiniteScroll;
-  numero: number=10
+  numero: number=20
 
   constructor(private exchangesService:ExchangeService, private router:Router,  private route: ActivatedRoute,private menuCtrl:MenuController) {}
 
