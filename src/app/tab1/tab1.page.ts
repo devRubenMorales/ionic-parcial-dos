@@ -14,7 +14,7 @@ export class Tab1Page implements OnInit{
 
   component = Tab2Page
   exchanges: Exchange[] = []
-  searchNames: Exchange[] = [];
+  searchNames:any;
   selectedFilter:string='trust-score-rank';
   filteredExchange: Exchange[] = [];
   favExchange: any;
@@ -32,6 +32,7 @@ export class Tab1Page implements OnInit{
   searchExchange(event:any){
     const text= event.target.value;
     if (text && text.trim() !=''){
+      this.searchNames = [...this.exchanges]
       this.searchNames = this.searchNames.filter((exchange: any)=>{
         return (exchange.name.toLowerCase().indexOf(text.toLowerCase())) > -1
       })
