@@ -13,10 +13,11 @@ import { Tab2Page } from '../tab2/tab2.page';
 export class Tab3Page{
   component = Tab2Page
   constructor(private exchangesService:ExchangeService) { }
-  favArray: Exchange[] = [];
+  favArray: Exchange[] = []; // Arreglo de exchange favoritos
   
   ionViewWillEnter() {
-    this.favArray = this.exchangesService.getFav()
+     // Metodo que se ejecuta antes de que la pagina se muestre
+    this.favArray = this.exchangesService.getFav() // Obtiene los intercambios favoritos del servicio ExchangeService
   }
 
 }

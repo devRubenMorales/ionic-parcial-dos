@@ -13,23 +13,24 @@ import { IonInfiniteScroll , MenuController } from '@ionic/angular';
 export class Tab1Page implements OnInit{
 
   component = Tab2Page
-  exchanges: Exchange[] = []
-  searchNames:any;
-  selectedFilter:string='trust-score-rank';
-  filteredExchange: Exchange[] = [];
-  favExchange: any;
-  @ViewChild(IonInfiniteScroll) infiniteScroll!: IonInfiniteScroll;
-  numero: number=20
+  exchanges: Exchange[] = []  // Arreglo de exchange
+  searchNames:any; // Variable para búsqueda de nombres
+  selectedFilter:string='trust-score-rank'; // Filtro seleccionado inicialmente
+  filteredExchange: Exchange[] = []; // Arreglo de exchange filtrados
+  favExchange: any; // exchange favorito 
+  @ViewChild(IonInfiniteScroll) infiniteScroll!: IonInfiniteScroll; // Referencia al componente IonInfiniteScroll
+  numero: number=20 // Número inicial
 
   constructor(private exchangesService:ExchangeService, private router:Router,  private route: ActivatedRoute,private menuCtrl:MenuController) {}
 
   ngOnInit(){
     this.exchangesService.getExchanges().subscribe(respuesta =>{
       this.exchanges = respuesta;
-      this.searchNames = this.exchanges;
+      this.searchNames = this.exchanges; // Se asigna la lista completa de exchange a la variable de búsqueda 
     })
   }
   searchExchange(event:any){
+    // Metodo para filtrar a traves de busqueda por nombre 
     const text= event.target.value;
     if (text && text.trim() !=''){
       this.searchNames = [...this.exchanges]
@@ -39,6 +40,7 @@ export class Tab1Page implements OnInit{
     }
   }
   filterExchange(){
+    // Metodo para filtrar a traves de top-rank
     if(this.selectedFilter==='trust-score-rank'){
       this.searchNames = this.exchanges.sort((a,b) => {
         if(a.trust_score_rank < b.trust_score_rank){
@@ -49,6 +51,7 @@ export class Tab1Page implements OnInit{
           return 0;
         }
       })
+       // Metodo para filtrar a traves de a-z 
     }else if(this.selectedFilter==='a-z'){
       this.searchNames = this.exchanges.sort((a, b) => {
         if(a.name < b.name) {
@@ -62,6 +65,7 @@ export class Tab1Page implements OnInit{
     }
   }
   addExchangeFav(id: string){
+    // Metodo para agregar un exchange favorito
     if(id){
       this.exchangesService.getExchangesById(id).subscribe(respuesta => {
         this.favExchange = respuesta
@@ -70,6 +74,7 @@ export class Tab1Page implements OnInit{
     }
   }
   loadData(event:any){
+    // Metodo para cargar mas datos (scroll infinito)
     setTimeout(() => {
       if(this.numero < this.exchanges.length){
         this.numero+=10; 
